@@ -1,0 +1,138 @@
+
+body {
+  margin: 0;
+  padding: 25px;
+  font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  background-color: #8fa7e6;
+  background-image: url("Images/new_york.png");
+  background-size: cover;          /* Stretches photo to fill screen without tiling */
+  background-position: center;     /* Centers the background image */
+  background-attachment: fixed;    /* Keeps the background locked in place while scrolling */
+  min-height: 100vh;
+}
+
+h1 {
+  color: #60c571;
+  text-align: left;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7); /* Adds contrast so text pops over bright buildings */
+  margin-top: 0;
+}
+
+/* =========================================
+   2. GLASSMORPHISM BURGER MENU
+   ========================================= */
+.navbar {
+  position: relative; /* Acts as the anchor point for the absolute dropdown menu */
+  display: inline-block;
+  z-index: 100;       /* Keeps the menu floating above content cards */
+  margin-bottom: 20px;
+}
+
+/* Hides the raw checkbox while preserving its toggle functionality */
+.menu-toggle {
+  display: none;
+}
+
+/* The Burger Button */
+.burger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  cursor: pointer;
+  padding: 12px;
+  border-radius: 15px;
+  background: rgba(25, 160, 45, 0.25);
+  backdrop-filter: blur(10px) saturate(180%);
+  -webkit-backdrop-filter: blur(10px) saturate(180%);
+  border: 1px solid rgba(120, 255, 140, 0.4);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.5);
+}
+
+/* The three lines inside the burger button */
+.burger span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: rgb(97, 196, 103);
+  border-radius: 3px;
+  transition: all 0.3s ease; /* Smoothly animates into an 'X' */
+}
+
+/* The Dropdown Menu List */
+.nav-list {
+  position: absolute;
+  top: 55px;          /* Places dropdown right below the burger button */
+  left: 0;
+  width: 200px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 25px;
+  background: rgba(25, 160, 45, 0.28);
+  backdrop-filter: blur(10px) saturate(180%);
+  -webkit-backdrop-filter: blur(10px) saturate(180%);
+  border: 1px solid rgba(120, 255, 140, 0.4);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.5);
+
+  /* CLOSED STATE */
+  max-height: 0;
+  opacity: 0;
+  pointer-events: none; /* Stops users from clicking invisible links */
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+}
+
+/* OPEN STATE: Triggered when the hidden checkbox is checked */
+.menu-toggle:checked ~ .nav-list {
+  max-height: 400px;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.nav-list li a {
+  display: block;
+  color: rgb(97, 196, 103);
+  text-align: center;
+  padding: 16px;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.nav-list li a:hover {
+  background-color: #165e0b;
+  color: #ffffff;
+}
+
+.nav-list li a.selected {
+  color: #ffffff;
+  background-color: #0b3c1f;
+  font-weight: bold;
+}
+
+/* Burger to 'X' transformation animation */
+.menu-toggle:checked + .burger span:nth-child(1) {
+  transform: translateY(8.5px) rotate(45deg);
+}
+.menu-toggle:checked + .burger span:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle:checked + .burger span:nth-child(3) {
+  transform: translateY(-8.5px) rotate(-45deg);
+}
+
+/* =========================================
+   3. CONTENT CARDS (.hvit)
+   ========================================= */
+.hvit {
+  color: azure;
+  background-color: rgba(2, 32, 32, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(120, 255, 140, 0.25);
+  padding: 25px;
+  border-radius: 20px;
+  max-width: 700px;
+  line-height: 1.6;
+}
